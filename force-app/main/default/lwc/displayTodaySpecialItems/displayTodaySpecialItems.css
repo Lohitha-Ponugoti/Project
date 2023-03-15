@@ -1,0 +1,15 @@
+.title {
+    animation: blinker 1.5s linear infinite;
+    color: orangered;
+    font-size: 20px;
+    font-family: sans-serif;
+    text-align: center;
+}
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
+.my-card {
+    background-color: blue;
+}

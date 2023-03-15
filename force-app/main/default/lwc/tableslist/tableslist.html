@@ -1,3 +1,12 @@
 <template>
-    
+    <lightning-card>
+       
+           <lightning-datatable
+                key-field="Id"
+                data={data}
+                columns={tableColumns}
+                onrowaction={handleRowAction}>
+            </lightning-datatable>
+       
+    </lightning-card>
 </template>

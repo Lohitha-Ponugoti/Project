@@ -1,0 +1,73 @@
+<template>
+    <lightning-card>
+
+      <!--Add Tabless-->
+    <lightning-button variant="brand" label="Add Table" title="Add Table" onclick={showModalBox}
+     class="slds-m-left_x-small"> </lightning-button>
+    
+    <template if:true={isShowModal}>    
+      <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+         <div class="slds-modal__container">
+  
+            <!-- popup body  -->
+         <c-multipletable-creation if:true={isShowModal}></c-multipletable-creation>
+            <!-- popup footer -->
+            <footer class="slds-modal__footer">
+               <button class="slds-button slds-button_neutral" onclick={hideModalBox}>Close</button>
+            </footer>      
+         </div>
+      </section>
+      <div class="slds-backdrop slds-backdrop_open"></div>
+   </template>
+
+   <!--Display Tabless-->
+
+<lightning-button variant="brand" label="Display Tables" onclick={showComp1} 
+   class="slds-m-left_x-small"></lightning-button>   
+<template if:true={showModalBox1}>
+
+<div class="slds-grid slds-wrap">
+<template for:each={getTab} for:item="tab">
+ <div key={tab.Id} class="slds-col slds-size_1-of-2 slds-p-around_medium">
+            
+     <lightning-card icon-name="standard:identifier">
+                 <p slot="title" >
+                     <b>Name : {tab.Name}</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                     
+                     <lightning-button label="Delete Table" variant="destructive-text" 
+                     onclick={handleDelete} value={tab.Id}></lightning-button>
+                 </p>
+                 <div class="slds-grid slds-no-flex">
+                     &nbsp;&nbsp;
+                     <div class="slds-size_1-of-2"> 
+                         <b>Image</b>: <img 
+                                  src={tab.Table_Image_Link__c}
+                                  alt=" " 
+                                  height="60px" 
+                                  width="100px"/><br/>
+                  
+                     </div>
+                     <div class="slds-size_1-of-2">
+                         <b>Capacity : {tab.CCXR_Capacity__c}</b><br/>
+                         <b>Book Time</b>  : {tab.CCXR_Booked_Time__c}<br/> 
+                         <b>Description</b>  : {tab.CCXR_Restaurant_Employee__c}<br/>
+                       
+                     </div>  
+             
+                 </div>
+                 <p slot="footer">
+                     <b>
+                        Status : <lightning-icon icon-name="utility:moneybag"
+                              alternative-text="Event"
+                             size="xx-small"></lightning-icon>{tab.CCXR_Table_Status__c}
+                     </b>
+                 
+         </p>  
+     </lightning-card>
+   </div>
+         
+   </template>
+   </div>
+</template> 
+ </lightning-card>
+</template>

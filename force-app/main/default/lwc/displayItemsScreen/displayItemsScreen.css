@@ -1,0 +1,15 @@
+.inputsize{
+    color: aquamarine;
+}
+.backgroundImg{
+    
+       
+    background-position:initial;
+    background-size: cover;
+    
+    
+}
+:host lightning-tabset {
+    width: 200px; /* Set the width of the tabset */
+    height: 300px; /* Set the height of the tabset */
+  }

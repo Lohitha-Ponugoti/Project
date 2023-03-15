@@ -1,30 +1,9 @@
-import { LightningElement,wire,api,track} from 'lwc';
-import getTableData from '@salesforce/apex/TableController1.getTableData';
-export default class tableDetails extends LightningElement 
+import { LightningElement,wire,api} from 'lwc';
+import getTableData from '@salesforce/apex/TableController.getTableData';
+export default class TableDetails extends LightningElement 
 {
-    @api status
-    @api className
-    @api status3class
-    @track status3
-   /* handleChange(event){
-        this.status3=event.target.value;
-        if(status3==="Occupied"){
-            this.status3class='red';
-           
-        }
-        else 
-        this.status3class='green';
-    }*/
-   
-
-    /*get statusClassName() {
-        return this.className ? 'status ' + this.className : 'status'
-    }*/
-    
-    @track recordId;
-    @track tables;
-    @track status2;
-    
+    @api recordId;
+     @api  tables;
     @wire(getTableData)
     wiredContacts({ error, data }) {
         if (data) {
@@ -33,12 +12,8 @@ export default class tableDetails extends LightningElement
             console.error(error);
         }
     }
-    get statusColor() {
-        return `slds-col slds-size_1-of-10 slds-text-align_right slds-text-title_bold ${
-            this.tables.CCXR_Table_Status__c == "Vacant" ? "vacant" : "occupied"
-          }`;
-          /*return this.className ? 'alert ' + this.className : 'alert'*/
-        }
-       
-        
+
+    handleClick(event) {
+        // Handle detail button click here
+    }
 }
